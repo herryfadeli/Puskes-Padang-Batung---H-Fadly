@@ -224,7 +224,7 @@ class RekamMedisResource extends Resource
                     ->schema([
                         Select::make('tindakan_id')
                             ->label('Nama Tindakan / Layanan')
-                            ->options(Tindakan::where('is_active', '=', true)->where('kategori', '!=', 'Penunjang')->pluck('nama_tindakan', 'id'))
+                            ->options(Tindakan::query()->where('is_active', true)->where('kategori', '!=', 'Penunjang')->pluck('nama_tindakan', 'id'))
                             ->required()
                             ->searchable()
                             ->validationMessages([
@@ -293,7 +293,7 @@ class RekamMedisResource extends Resource
             Section::make('5. Permintaan Laboratorium & Terapi')->schema([
                 Select::make('lab_layanan_ids')
                     ->label('Pilih Pemeriksaan Laboratorium (Pemeriksaan Penunjang)')
-                    ->options(Tindakan::where('kategori', '=', 'Penunjang')->where('is_active', '=', true)->pluck('nama_tindakan', 'id'))
+                    ->options(Tindakan::query()->where('kategori', 'Penunjang')->where('is_active', true)->pluck('nama_tindakan', 'id'))
                     ->multiple()
                     ->searchable()
                     ->preload()

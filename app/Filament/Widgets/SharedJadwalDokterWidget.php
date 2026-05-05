@@ -31,7 +31,8 @@ class SharedJadwalDokterWidget extends Widget
                     'nama_poli' => $jadwal->dokter->poli->nama_poli ?? 'Tanpa Poli',
                     'total_kuota' => 0,
                     'dokters' => [],
-                    'terdaftar' => Pendaftaran::whereDate('tanggal_daftar', $tanggalSekarang)
+                    'terdaftar' => Pendaftaran::query()
+                                            ->whereDate('tanggal_daftar', '=', $tanggalSekarang)
                                             ->where('poli_id', $poliId)
                                             ->count(),
                 ];

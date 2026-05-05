@@ -34,7 +34,7 @@ class Pasien extends Model
     public static function generateNoRm(): string
     {
         $prefix = 'RM-' . date('Ym') . '-';
-        $lastRecord = static::where('no_rm', 'like', $prefix . '%')
+        $lastRecord = static::query()->where('no_rm', 'like', $prefix . '%')
             ->orderBy('no_rm', 'desc')
             ->first();
 

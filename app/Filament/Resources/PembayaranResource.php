@@ -63,7 +63,7 @@ class PembayaranResource extends Resource
                         ->label('Nomor Kartu BPJS')
                         ->placeholder('Contoh: 0001234567890')
                         ->visible(fn (Forms\Get $get): bool => 
-                            \App\Models\Pendaftaran::find($get('pendaftaran_id'))?->jenis_pembayaran === 'BPJS'
+                            \App\Models\Pendaftaran::find($get('pendaftaran_id'), ['*'])?->jenis_pembayaran === 'BPJS'
                         )
                         ->maxLength(20),
 
@@ -144,7 +144,7 @@ class PembayaranResource extends Resource
             ]);
     }
 
-    public static function calculateCosts($state, Forms\Set $set): void
+    public static function calculateCosts(mixed $state, Forms\Set $set): void
     {
         if (!$state) return;
         

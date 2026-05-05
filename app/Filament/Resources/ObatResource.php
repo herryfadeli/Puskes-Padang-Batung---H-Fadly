@@ -146,7 +146,7 @@ class ObatResource extends Resource
                         ->required(),
                 ])
                 ->action(function (Obat $record, array $data) {
-                    $record->increment('stok', $data['jumlah']);
+                    $record->increment('stok', $data['jumlah'], []);
                     
                     // Riwayat stok otomatis tercatat melalui ObatObserver
                     // Update deskripsi pada entri terakhir agar sesuai dengan input pengguna

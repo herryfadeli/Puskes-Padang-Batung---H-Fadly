@@ -9,7 +9,7 @@
         <div class="fi-section rounded-xl bg-white shadow-sm ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 p-6">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div class="flex items-center gap-6">
-                    <div class="flex-shrink-0">
+                    <div class="shrink-0">
                         <div class="flex h-16 w-16 items-center justify-center rounded-full bg-primary-100 dark:bg-primary-500/20">
                             <x-heroicon-o-user class="h-8 w-8 text-primary-600 dark:text-primary-400" />
                         </div>

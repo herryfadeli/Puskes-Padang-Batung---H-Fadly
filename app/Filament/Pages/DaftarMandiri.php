@@ -99,7 +99,8 @@ class DaftarMandiri extends Page implements HasForms
         }
 
         // Cek apakah hari ini sudah mendaftar di poli yang sama
-        $alreadyRegistered = Pendaftaran::where('pasien_id', $pasien->id)
+        $alreadyRegistered = Pendaftaran::query()
+            ->where('pasien_id', $pasien->id)
             ->whereDate('tanggal_daftar', $data['tanggal_daftar'])
             ->where('poli_id', $data['poli_id'])
             ->exists();
@@ -117,7 +118,7 @@ class DaftarMandiri extends Page implements HasForms
         $noAntrian = Pendaftaran::generateNoAntrian($data['poli_id']);
         
         // Cek riwayat untuk Jenis Kunjungan
-        $hasHistory = Pendaftaran::where('pasien_id', $pasien->id)->exists();
+        $hasHistory = Pendaftaran::query()->where('pasien_id', $pasien->id)->exists();
 
         // Ambil data BPJS jika ada
         $noBpjs = $data['no_bpjs'] ?? null;

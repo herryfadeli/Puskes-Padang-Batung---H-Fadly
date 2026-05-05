@@ -49,7 +49,7 @@ class TindakanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()
+                Forms\Components\Section::make('')
                     ->schema([
                         Forms\Components\TextInput::make('nama_tindakan')
                             ->required()

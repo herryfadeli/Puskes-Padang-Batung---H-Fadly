@@ -37,7 +37,8 @@ class CreatePembayaran extends CreateRecord
             $pembayaran->pendaftaran->update(['status' => 'Selesai']);
 
             // Update Antrian Kasir status
-            Antrian::where('pendaftaran_id', $pembayaran->pendaftaran_id)
+            Antrian::query()
+                ->where('pendaftaran_id', $pembayaran->pendaftaran_id)
                 ->where('kategori', 'Kasir')
                 ->update(['status' => 'Selesai']);
         }
