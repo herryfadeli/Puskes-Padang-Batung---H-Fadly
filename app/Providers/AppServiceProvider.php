@@ -22,5 +22,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Obat::observe(ObatObserver::class);
+        
+        // Fix for php artisan serve on Windows with PHP 8.4
+        if (class_exists(\Illuminate\Foundation\Console\ServeCommand::class)) {
+            \Illuminate\Foundation\Console\ServeCommand::$passthroughVariables[] = 'SystemRoot';
+            \Illuminate\Foundation\Console\ServeCommand::$passthroughVariables[] = 'SystemDrive';
+        }
     }
 }
